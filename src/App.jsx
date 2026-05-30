@@ -204,10 +204,9 @@ function HomePage({ onNavigate }) {
       {/* Cards */}
       <div style={{
         display: "grid",
-        gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
         gap: 20, maxWidth: 860,
         margin: "0 auto", padding: isMobile ? "0 20px 80px" : "0 48px 80px"
-      }}>
+      }} className="home-grid">
         {cards.map(card => (
           <div
             key={card.id}
@@ -271,15 +270,23 @@ function ZonesPage({ onBack, onSelectZone }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#f8fafc", fontFamily: "'DM Sans', sans-serif" }}>
+      <style>{`
+        .zones-grid { grid-template-columns: repeat(3, 1fr) !important; }
+        .home-grid  { grid-template-columns: 1fr 1fr !important; }
+        @media (max-width: 768px) {
+          .zones-grid { grid-template-columns: 1fr !important; }
+          .home-grid  { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
       <BackButton onClick={onBack} />
       <PageHeader icon="🌱" title="Field Zones" subtitle="Select a zone to view detailed soil and crop data" />
 
       <div style={{ padding: isMobile ? "24px 16px 40px" : "40px 48px", maxWidth: 1100, margin: "0 auto" }}>
         <div style={{
           display: "grid",
-          gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
-          gap: isMobile ? 16 : 28
-        }}>
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: 28
+        }} className="zones-grid">
           {ZONES.map(zone => (
             <div
               key={zone.id}
