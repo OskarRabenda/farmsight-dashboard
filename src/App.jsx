@@ -284,7 +284,7 @@ function ZonesPage({ onBack, onSelectZone }) {
       <div style={{ padding: isMobile ? "24px 16px 40px" : "40px 48px", maxWidth: 1100, margin: "0 auto" }}>
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
+          gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
           gap: 28
         }} className="zones-grid">
           {ZONES.map(zone => (
